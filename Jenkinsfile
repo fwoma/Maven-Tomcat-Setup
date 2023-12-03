@@ -37,13 +37,13 @@ pipeline {
         }
       stage('SonarScanning') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://172.31.20.208:9000 -Dsonar.login=a597aa0c2310906aa3bfba683e3bdc424f0293f3'
+                sh 'mvn sonar:sonar 
             }
 			}
         
       stage("Publish to Nexus Repository Manager") {
             steps {
-            sh 'mvn clean deploy'
+            sh 'mvn deploy'
             }
             }
       stage("Deploy it to tomcat") {
