@@ -48,7 +48,7 @@ pipeline {
             }
       stage("Deploy it to tomcat") {
             steps {
-            sh 'ssh -t -t root@3.85.175.67 -o StrictHostKeyChecking=no "mvn install tomcat7:deploy"'
+            deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.21.100:8000')], contextPath: null, war: '**/*.war'
             }
         }
 }
