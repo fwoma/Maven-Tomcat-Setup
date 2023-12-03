@@ -35,21 +35,22 @@ pipeline {
                 }
             }
         }
-      stage('SonarScanning') {
+        stage('SonarScanning') {
             steps {
-                sh 'mvn sonar:sonar 
-            }
-			}
-        
-      stage("Publish to Nexus Repository Manager") {
-            steps {
-            sh 'mvn deploy'
-            }
-            }
-      stage("Deploy it to tomcat") {
-            steps {
-            deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.21.100:8000')], contextPath: null, war: '**/*.war'
+                sh 'mvn sonar:sonar'
             }
         }
-}
+        stage("Publish to Nexus Repository Manager") {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
+        stage("Deploy it to tomcat") {
+            steps {
+                script {
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.21.100:8000')], contextPath: null, war: '**/*.war'
+                }
+            }
+        }
+    }
 }
