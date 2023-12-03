@@ -4,7 +4,7 @@ pipeline {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git url: 'https://github.com/knowledgemate/Maven-Tomcat-Setup.git', branch: 'main'
+                    git url: 'https://github.com/fwoma/Maven-Tomcat-Setup.git', branch: 'main'
                 }
             }
         }
