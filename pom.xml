@@ -81,7 +81,7 @@
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
                 <sonar.host.url>
-                    http://65.2.74.189:9000
+                    http://172.31.20.208:9000
                 </sonar.host.url>
             </properties>
         </profile>
@@ -117,7 +117,7 @@
   <distributionManagement>
     <snapshotRepository>
       <id>Snapshots</id>
-      <url>http://localhost:8081/repository/maven-snapshots/</url>
+      <url>http://172.31.17.155:8081/repository/Dash-Snapshot/</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
