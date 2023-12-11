@@ -116,7 +116,7 @@
     </profiles>
   <distributionManagement>
     <snapshotRepository>
-      <id>Snapshots</id>
+      <id>nexus</id>
       <url>http://172.31.81.143:8081/repository/new/</url>
     </snapshotRepository>
   </distributionManagement>
