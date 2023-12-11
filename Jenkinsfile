@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    
+    tools {
+        // Assuming "maven" is the name of your Maven installation in Jenkins
+        maven "maven"
+    }
+    
     stages {
         stage("Clone code from GitHub") {
             steps {
@@ -8,26 +14,30 @@ pipeline {
                 }
             }
         }
+
         stage("Maven Build") {
             steps {
                 script {
-                    sh "mvn clean package"
+                    sh '/opt/maven/bin/mvn clean package'
                 }
             }
         }
+
         stage('Unit Test') {
             steps {
-                sh 'mvn test'
+                sh '/opt/maven/bin/mvn test'
             }
         }
+
         stage('Integration Test') {
             steps {
-                sh 'mvn verify -DskipUnitTests'
+                sh '/opt/maven/bin/mvn verify -DskipUnitTests'
             }
         }
+
         stage('Checkstyle Code Analysis') {
             steps {
-                sh 'mvn checkstyle:checkstyle'
+                sh '/opt/maven/bin/mvn checkstyle:checkstyle'
             }
             post {
                 success {
@@ -35,17 +45,20 @@ pipeline {
                 }
             }
         }
+
         stage('SonarScanning') {
             steps {
-                sh 'mvn sonar:sonar'
+                sh '/opt/maven/bin/mvn sonar:sonar'
             }
         }
+
         stage("Publish to Nexus Repository Manager") {
             steps {
-                sh 'mvn deploy'
+                sh '/opt/maven/bin/mvn deploy'
             }
         }
-        stage("Deploy it to tomcat") {
+
+        stage("Deploy it to Tomcat") {
             steps {
                 script {
                     deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.83.45:8080')], contextPath: null, war: '**/*.war'
