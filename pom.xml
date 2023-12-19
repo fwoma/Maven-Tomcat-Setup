@@ -81,7 +81,7 @@
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
                 <sonar.host.url>
-                    http://172.31.90.108:9000
+                    http://5.161.102.238:9000
                 </sonar.host.url>
             </properties>
         </profile>
@@ -117,7 +117,7 @@
   <distributionManagement>
     <snapshotRepository>
       <id>nexus</id>
-      <url>http://172.31.94.228:8081/repository/new/</url>
+      <url>http://5.161.219.34:8081/repository/new/</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
