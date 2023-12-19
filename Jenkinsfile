@@ -25,19 +25,19 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh '/opt/maven/bin/mvn test'
+                sh '/usr/share/maven/bin/mvn test'
             }
         }
 
         stage('Integration Test') {
             steps {
-                sh '/opt/maven/bin/mvn verify -DskipUnitTests'
+                sh '/usr/share/maven/bin/mvn verify -DskipUnitTests'
             }
         }
 
         stage('Checkstyle Code Analysis') {
             steps {
-                sh '/opt/maven/bin/mvn checkstyle:checkstyle'
+                sh '/usr/share/maven/bin/mvn checkstyle:checkstyle'
             }
             post {
                 success {
@@ -48,13 +48,13 @@ pipeline {
 
         stage('SonarScanning') {
             steps {
-                sh '/opt/maven/bin/mvn sonar:sonar'
+                sh '/usr/share/maven/bin/mvn sonar:sonar'
             }
         }
 
         stage("Publish to Nexus Repository Manager") {
             steps {
-                sh '/opt/maven/bin/mvn deploy'
+                sh '/usr/share/maven/bin/mvn deploy'
             }
         }
 
