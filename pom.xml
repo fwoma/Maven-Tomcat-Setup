@@ -117,7 +117,7 @@
   <distributionManagement>
     <snapshotRepository>
       <id>nexus</id>
-      <url>http://5.161.219.34:8081/repository/new/</url>
+      <url>http://5.161.219.34:8081/repository/deploy/</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
