@@ -64,7 +64,7 @@
         <artifactId>tomcat9-maven-plugin</artifactId>
         <version>2.2</version>
     <configuration>
-        <url>http://172.31.83.45:8080/manager/text</url>
+        <url>http://5.161.219.34:8080/manager/text</url>
         <server>TomcatServer</server>
         <path>/ReoWebPage</path>
     </configuration>
