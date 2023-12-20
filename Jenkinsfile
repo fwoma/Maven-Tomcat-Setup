@@ -54,7 +54,7 @@ pipeline {
 
         stage("Publish to Nexus Repository Manager") {
             steps {
-                sh '/usr/share/maven/bin/mvn deploy'
+                sh '/opt/bin/mvn deploy'
             }
         }
 
