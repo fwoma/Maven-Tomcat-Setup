@@ -7,7 +7,6 @@ pipeline {
     agent any
     
     tools {
-        // Assuming "maven" is the name of your Maven installation in Jenkins
         maven "maven"
     }
     
@@ -68,18 +67,16 @@ pipeline {
         stage("Deploy it to Tomcat") {
             steps {
                 script {
-                    // Custom deployment to Tomcat, adjust based on the plugin you are using
                     deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.30.47:8080')], contextPath: null, war: '**/*.war'
                 }
             }
-        }
-        
-        post {
-            always {
-                echo 'Slack Notifications.'
-                slackSend channel: '#uatcicd',
-                    color: COLOR_MAP[currentBuild.currentResult],
-                    message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+            post {
+                always {
+                    echo 'Slack Notifications.'
+                    slackSend channel: '#uatcicd',
+                        color: COLOR_MAP[currentBuild.currentResult],
+                        message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+                }
             }
         }
     }
