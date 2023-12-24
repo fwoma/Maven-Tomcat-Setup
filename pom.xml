@@ -69,8 +69,7 @@
         <path>/ReoWebPage</path>
     </configuration>
 </plugin>
-    </plugins>
-          
+    </plugins>          
   </build>
    <profiles>
         <profile>
