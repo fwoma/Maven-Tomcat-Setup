@@ -64,7 +64,7 @@
         <artifactId>tomcat9-maven-plugin</artifactId>
         <version>2.2</version>
     <configuration>
-        <url>http://5.161.219.34:8080/manager/text</url>
+        <url>http://172.31.21.125:8080/manager/text</url>
         <server>TomcatServer</server>
         <path>/ReoWebPage</path>
     </configuration>
@@ -81,7 +81,7 @@
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
                 <sonar.host.url>
-                    http://5.161.102.238:9000
+                    http://172.31.24.76:9000
                 </sonar.host.url>
             </properties>
         </profile>
@@ -117,7 +117,7 @@
   <distributionManagement>
     <snapshotRepository>
       <id>nexus</id>
-      <url>http://5.161.219.34:8081/repository/deploy/</url>
+      <url>http://172.31.25.158:8081/repository/deploy/</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
