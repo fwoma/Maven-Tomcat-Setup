@@ -48,7 +48,9 @@ pipeline {
 
         stage('SonarScanning') {
             steps {
-                sh '/usr/share/maven/bin/mvn sonar:sonar'
+                script {
+                    sh "/usr/share/maven/bin/mvn sonar:sonar -Dsonar.login=34b88ef7da5fa7fca5c3e510d85a0b73caf518e9"
+                }
             }
         }
 
@@ -68,4 +70,12 @@ pipeline {
         }
     }
 
+    post {
+        always {
+            echo 'Slack Notifications.'
+            slackSend channel: '#uatcicd',
+                color: COLOR_MAP[currentBuild.currentResult],
+                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+        }
     }
+}
