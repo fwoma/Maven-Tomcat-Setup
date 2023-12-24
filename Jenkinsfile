@@ -61,7 +61,12 @@ pipeline {
         stage("Deploy it to Tomcat") {
             steps {
                 script {
-                    deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://5.161.219.34:8080')], contextPath: null, war: '**/*.war'
+                    // Custom deployment to Tomcat, adjust based on the plugin you are using
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'https://172.31.21.125:8080')], contextPath: null, war: '**/*.war'
+                }
+            }
+        }
+
                 }
             }
         }
