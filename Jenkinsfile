@@ -64,8 +64,7 @@ pipeline {
             steps {
                 script {
                     // Custom deployment to Tomcat, adjust based on the plugin you are using
-                   deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'https://172.31.21.125:8080', ignoreInvalidCertificates: true)], contextPath: null, war: '**/*.war'
-
+                       deploy adapters: [tomcat9(path: '', url: 'http://172.31.30.47:8080')], contextPath: null, war: '**/*.war'
                 }
             }
         }
